@@ -5,6 +5,7 @@ import { ArrowIcon, TerminalIcon } from "@/components/Icons";
 import Link from "next/link";
 
 import { Button } from "@/components/Button";
+import { HippoMark } from "@/components/HippoMark";
 import { HeroSocialLinks } from "@/components/Navigation";
 import { LINKS, SITE } from "@/lib/constants";
 
@@ -23,13 +24,16 @@ export function Hero() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative mx-auto max-w-4xl px-6 text-center"
       >
-        <p className="mb-6 text-sm tracking-[0.2em] text-zinc-500 uppercase">
+        <p className="mb-4 text-sm tracking-[0.2em] text-zinc-500 uppercase sm:mb-6">
           Memory assistant for work &amp; life
         </p>
 
-        <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-          {SITE.name}
-        </h1>
+        <div className="flex items-center justify-center gap-3 sm:gap-4">
+          <HippoMark size="sm" className="shrink-0" />
+          <h1 className="text-5xl leading-none font-semibold tracking-tight text-white sm:text-7xl">
+            {SITE.name}
+          </h1>
+        </div>
 
         <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-zinc-200 sm:text-2xl">
           {SITE.tagline}
