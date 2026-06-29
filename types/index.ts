@@ -37,8 +37,3 @@ export interface ChatResponse {
   latency_ms: number;
 }
 
-export type LoadingStatus =
-  | "Searching memories..."
-  | "Updating memory..."
-  | "Saving memory..."
-  | "Thinking...";

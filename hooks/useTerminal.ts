@@ -11,14 +11,18 @@ import {
 
 import { useChat } from "@/hooks/useChat";
 import { useSession } from "@/hooks/useSession";
-import { TERMINAL_HISTORY_KEY, TERMINAL_WELCOME } from "@/lib/constants";
+import {
+  SESSION_GREETING,
+  TERMINAL_HISTORY_KEY,
+  TERMINAL_WELCOME,
+} from "@/lib/constants";
 import { generateId, sleep } from "@/lib/utils";
 import type { TerminalLine } from "@/types";
 
 const INPUT_HISTORY_LIMIT = 50;
 
-function createWelcomeLines(): TerminalLine[] {
-  return [
+function createWelcomeLines(includeGreeting = true): TerminalLine[] {
+  const lines: TerminalLine[] = [
     {
       id: generateId(),
       type: "welcome",
@@ -32,6 +36,17 @@ function createWelcomeLines(): TerminalLine[] {
       timestamp: Date.now(),
     },
   ];
+
+  if (includeGreeting) {
+    lines.push({
+      id: generateId(),
+      type: "response",
+      content: SESSION_GREETING,
+      timestamp: Date.now(),
+    });
+  }
+
+  return lines;
 }
 
 async function animateResponse(
@@ -89,7 +104,7 @@ export function useTerminal() {
     try {
       const parsed = JSON.parse(stored) as TerminalLine[];
       if (parsed.length > 0) {
-        setLines([...createWelcomeLines(), ...parsed]);
+        setLines([...createWelcomeLines(false), ...parsed]);
         setHasInteracted(true);
       }
     } catch {

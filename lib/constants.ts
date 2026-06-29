@@ -14,6 +14,10 @@ export const LINKS = {
   email: "mailto:sumaantamunde@gmail.com",
 } as const;
 
+export const SESSION_GREETING = "Hi, how can I help you today?";
+
+export const LOADING_STATUS = "asking the ducks...";
+
 export const TERMINAL_WELCOME = {
   title: SITE.name,
   tagline: "Everything you forget, remembered.",

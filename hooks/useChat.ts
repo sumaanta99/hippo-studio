@@ -4,8 +4,8 @@ import { useCallback, useRef, useState } from "react";
 
 import { ChatApiError, sendChatMessage } from "@/lib/api";
 import { trackChatError, trackChatSuccess } from "@/lib/analytics-client";
-import { inferLoadingStatus } from "@/lib/utils";
-import type { ChatResponse, LoadingStatus } from "@/types";
+import { LOADING_STATUS } from "@/lib/constants";
+import type { ChatResponse } from "@/types";
 
 interface UseChatOptions {
   sessionId: string;
@@ -13,7 +13,7 @@ interface UseChatOptions {
 
 export function useChat({ sessionId }: UseChatOptions) {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingStatus, setLoadingStatus] = useState<LoadingStatus | null>(null);
+  const [loadingStatus, setLoadingStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -30,7 +30,7 @@ export function useChat({ sessionId }: UseChatOptions) {
       abortRef.current = controller;
 
       setIsLoading(true);
-      setLoadingStatus(inferLoadingStatus(message));
+      setLoadingStatus(LOADING_STATUS);
       setError(null);
 
       try {
