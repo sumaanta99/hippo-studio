@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "🦛 Hippo",
+  name: "Hippo",
   tagline: "Everything you forget, remembered.",
   description:
     "Hippo is a personal memory assistant that remembers life's small details through natural conversation.",
