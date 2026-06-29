@@ -1,6 +1,6 @@
 "use client";
 
-import { GitHubIcon, LinkedInIcon } from "@/components/Icons";
+import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/Icons";
 import Link from "next/link";
 
 import { LINKS, SITE } from "@/lib/constants";
@@ -20,6 +20,22 @@ export function Navigation() {
             Built by{" "}
             <span className="text-zinc-400">{SITE.author}</span>
           </p>
+          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-zinc-500">
+            <a
+              href={LINKS.email}
+              className="inline-flex items-center gap-1 transition-colors hover:text-zinc-300"
+            >
+              <MailIcon className="h-3 w-3" />
+              {SITE.email}
+            </a>
+            <a
+              href={LINKS.phone}
+              className="inline-flex items-center gap-1 transition-colors hover:text-zinc-300"
+            >
+              <PhoneIcon className="h-3 w-3" />
+              {SITE.phone}
+            </a>
+          </div>
         </div>
 
         <div className="flex items-center gap-3 text-sm text-zinc-500 sm:hidden">
@@ -28,6 +44,12 @@ export function Navigation() {
             className="transition-colors hover:text-zinc-200"
           >
             Case study
+          </Link>
+          <Link
+            href="/#contact"
+            className="transition-colors hover:text-zinc-200"
+          >
+            Contact
           </Link>
           <Link
             href={LINKS.github}
@@ -55,6 +77,12 @@ export function Navigation() {
             Case study
           </Link>
           <Link
+            href="/#contact"
+            className="transition-colors hover:text-zinc-200"
+          >
+            Contact
+          </Link>
+          <Link
             href={LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -69,14 +97,6 @@ export function Navigation() {
             className="transition-colors hover:text-zinc-200"
           >
             LinkedIn
-          </Link>
-          <Link
-            href={LINKS.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-zinc-200"
-          >
-            Resume
           </Link>
         </div>
       </nav>

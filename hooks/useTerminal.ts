@@ -3,7 +3,6 @@
 import {
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
   type KeyboardEvent,
@@ -16,7 +15,7 @@ import {
   TERMINAL_HISTORY_KEY,
   TERMINAL_WELCOME,
 } from "@/lib/constants";
-import { generateId, sleep } from "@/lib/utils";
+import { generateId } from "@/lib/utils";
 import type { TerminalLine } from "@/types";
 
 const INPUT_HISTORY_LIMIT = 50;
@@ -47,23 +46,6 @@ function createWelcomeLines(includeGreeting = true): TerminalLine[] {
   }
 
   return lines;
-}
-
-async function animateResponse(
-  fullText: string,
-  onUpdate: (partial: string) => void,
-): Promise<void> {
-  if (!fullText) return;
-
-  const chunkSize = fullText.length > 120 ? 3 : 2;
-  const delay = fullText.length > 120 ? 12 : 18;
-
-  for (let i = chunkSize; i <= fullText.length; i += chunkSize) {
-    onUpdate(fullText.slice(0, i));
-    await sleep(delay);
-  }
-
-  onUpdate(fullText);
 }
 
 export function useTerminal() {
@@ -186,25 +168,10 @@ export function useTerminal() {
           {
             id: responseId,
             type: "response",
-            content: "",
+            content: fullResponse,
             timestamp: Date.now(),
-            animating: true,
           },
         ]);
-
-        await animateResponse(fullResponse, (partial) => {
-          setLines((prev) =>
-            prev.map((line) =>
-              line.id === responseId
-                ? {
-                    ...line,
-                    content: partial,
-                    animating: partial !== fullResponse,
-                  }
-                : line,
-            ),
-          );
-        });
       } finally {
         focusInput();
       }
@@ -256,11 +223,6 @@ export function useTerminal() {
     [clearTerminal, historyIndex, input, inputHistory, submitMessage],
   );
 
-  const showPromptChips = useMemo(
-    () => !hasInteracted && !isLoading,
-    [hasInteracted, isLoading],
-  );
-
   return {
     sessionId,
     lines,
@@ -270,7 +232,6 @@ export function useTerminal() {
     scrollRef,
     isLoading,
     loadingStatus,
-    showPromptChips,
     submitMessage,
     clearTerminal,
     handleKeyDown,

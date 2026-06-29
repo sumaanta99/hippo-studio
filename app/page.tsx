@@ -1,3 +1,4 @@
+import { ContactSection } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Navigation } from "@/components/Navigation";
@@ -14,6 +15,7 @@ export default function Home() {
         <Terminal />
         <TechStackSection />
         <RoadmapSection />
+        <ContactSection />
       </main>
       <Footer />
     </>

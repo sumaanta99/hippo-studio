@@ -24,7 +24,7 @@ export function Hero() {
         className="relative mx-auto max-w-4xl px-6 text-center"
       >
         <p className="mb-6 text-sm tracking-[0.2em] text-zinc-500 uppercase">
-          Personal memory assistant
+          Memory assistant for work &amp; life
         </p>
 
         <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
@@ -35,23 +35,23 @@ export function Hero() {
           {SITE.tagline}
         </p>
 
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg">
-          Remember where you kept your passport. Save someone&apos;s phone number.
-          Keep a shopping list. Recall anything instantly.
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-zinc-400 sm:mt-6 sm:text-lg">
+          Remember where you kept your passport. Jot a follow-up for Angela.
+          Save a phone number or keep a shopping list. Recall anything instantly.
         </p>
 
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-zinc-500 sm:mt-4">
           {SITE.description} No folders, tags or commands. Just talk naturally.
         </p>
 
-        <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-400">
+        <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-400 sm:mt-8">
           <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-xs font-medium text-violet-300">
             Coming Soon
           </span>
           <span>📱 WhatsApp support is on the way.</span>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row">
           <Button onClick={scrollToTerminal}>Start Remembering</Button>
           <Link href={LINKS.github} target="_blank" rel="noopener noreferrer">
             <Button variant="secondary" className="w-full sm:w-auto">

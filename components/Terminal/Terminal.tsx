@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 
-import { PromptChip } from "@/components/PromptChip";
 import { Prompt } from "@/components/Terminal/Prompt";
 import { Response } from "@/components/Terminal/Response";
+import { UseCasesPanel } from "@/components/Terminal/UseCasesPanel";
 import { Window } from "@/components/Terminal/Window";
 import { useTerminal } from "@/hooks/useTerminal";
-import { SUGGESTED_PROMPTS, SESSION_NOTICE, TERMINAL_WELCOME } from "@/lib/constants";
+import { SESSION_NOTICE } from "@/lib/constants";
 
 export function Terminal() {
   const {
@@ -18,7 +18,6 @@ export function Terminal() {
     scrollRef,
     isLoading,
     loadingStatus,
-    showPromptChips,
     submitMessage,
     handleKeyDown,
   } = useTerminal();
@@ -30,7 +29,9 @@ export function Terminal() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
+        className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_300px] xl:grid-cols-[minmax(0,1fr)_320px]"
       >
+        <div>
         <Window>
           <div
             ref={scrollRef}
@@ -80,32 +81,6 @@ export function Terminal() {
                 );
               })}
 
-              {showPromptChips ? (
-                <div className="space-y-3 pt-1">
-                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-600">
-                    Try saying
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {TERMINAL_WELCOME.hints.map((hint) => (
-                      <PromptChip
-                        key={hint}
-                        label={hint}
-                        onSelect={submitMessage}
-                      />
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {SUGGESTED_PROMPTS.map((prompt) => (
-                      <PromptChip
-                        key={prompt}
-                        label={prompt}
-                        onSelect={submitMessage}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
               {isLoading && loadingStatus ? (
                 <p className="animate-pulse text-zinc-500">{loadingStatus}</p>
               ) : null}
@@ -125,11 +100,14 @@ export function Terminal() {
         <p className="mt-3 text-center text-xs text-zinc-600">
           ↑↓ history · Ctrl+L clear · Enter send
         </p>
-        <div className="mx-auto mt-4 max-w-lg space-y-1 text-center text-xs leading-5 text-zinc-600">
+        <div className="mx-auto mt-4 max-w-lg space-y-1 text-center text-xs leading-5 text-zinc-600 lg:mx-0 lg:max-w-none lg:text-left">
           {SESSION_NOTICE.lines.map((line) => (
             <p key={line}>{line}</p>
           ))}
         </div>
+        </div>
+
+        <UseCasesPanel onSelect={submitMessage} disabled={isLoading} />
       </motion.div>
     </section>
   );

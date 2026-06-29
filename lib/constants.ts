@@ -2,16 +2,17 @@ export const SITE = {
   name: "Hippo",
   tagline: "Everything you forget, remembered.",
   description:
-    "Hippo is a personal memory assistant that remembers life's small details through natural conversation.",
+    "Hippo is a memory assistant for work and life; follow-ups, meeting notes, where you put things, and everything in between.",
   author: "Sumaanta Munde",
   email: "sumaantamunde@gmail.com",
+  phone: "9550614763",
 } as const;
 
 export const LINKS = {
   github: "https://github.com/sumaanta99/hippo",
   linkedin: "https://www.linkedin.com/in/sumaanta-munde-97a751157/",
-  resume: "https://www.linkedin.com/in/sumaanta-munde-97a751157/",
   email: "mailto:sumaantamunde@gmail.com",
+  phone: "tel:+919550614763",
 } as const;
 
 export const SESSION_GREETING = "Hi, how can I help you today?";
@@ -22,17 +23,43 @@ export const TERMINAL_WELCOME = {
   title: SITE.name,
   tagline: "Everything you forget, remembered.",
   hints: [
+    "message Angela about the Q3 budget",
     "my passport is in the blue drawer",
-    "buy milk and eggs",
-    "where are my keys?",
+    "follow up with Sarah on the design review",
   ],
 } as const;
 
-export const SUGGESTED_PROMPTS = [
-  "My charger is in the study",
-  "I need milk",
-  "My passport is in the office locker",
-  "What do you know about me?",
+export const USE_CASES = [
+  {
+    category: "Work",
+    title: "Save a follow-up",
+    description: "Track who to message and about what.",
+    prompt: "Remind me to message Angela about the Q3 budget",
+  },
+  {
+    category: "Work",
+    title: "Set a deadline",
+    description: "Remember when something is due.",
+    prompt: "Send the client deck by Friday EOD",
+  },
+  {
+    category: "Life",
+    title: "Remember where something is",
+    description: "No more hunting for important items.",
+    prompt: "My passport is in the blue drawer",
+  },
+  {
+    category: "Life",
+    title: "Build a shopping list",
+    description: "Add items as you think of them.",
+    prompt: "I need milk, eggs, and bread",
+  },
+  {
+    category: "Recall",
+    title: "Ask naturally",
+    description: "Retrieve anything you saved before.",
+    prompt: "Where did I put my passport?",
+  },
 ] as const;
 
 export const TECH_STACK = [
