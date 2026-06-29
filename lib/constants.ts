@@ -21,7 +21,6 @@ export const TERMINAL_WELCOME = {
     "my passport is in the blue drawer",
     "buy milk and eggs",
     "where are my keys?",
-    "remember chirag's number",
   ],
 } as const;
 
