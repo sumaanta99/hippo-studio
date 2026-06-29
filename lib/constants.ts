@@ -16,7 +16,7 @@ export const LINKS = {
 
 export const SESSION_GREETING = "Hi, how can I help you today?";
 
-export const LOADING_STATUS = "asking the ducks...";
+export const LOADING_STATUS = "checking with the ducks...";
 
 export const TERMINAL_WELCOME = {
   title: SITE.name,
