@@ -14,7 +14,7 @@ export function RoadmapSection() {
       className="mx-auto max-w-xl px-6 py-20 text-center"
     >
       <h2 className="text-2xl font-medium tracking-tight text-white sm:text-3xl">
-        Where Hippo is going
+        Where hippo is going
       </h2>
       <ul className="mt-8 space-y-3 text-left">
         {ROADMAP.map((item) => (

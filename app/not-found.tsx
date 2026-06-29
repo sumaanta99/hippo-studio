@@ -11,7 +11,7 @@ export default function NotFound() {
         This route doesn&apos;t exist. Head back to the terminal.
       </p>
       <Link href="/" className="mt-8">
-        <Button>Back to Hippo</Button>
+        <Button>Back to hippo</Button>
       </Link>
     </main>
   );

@@ -31,7 +31,7 @@ export function Hero() {
         <div className="flex items-center justify-center gap-3 sm:gap-4">
           <HippoMark size="sm" className="shrink-0" />
           <h1 className="text-5xl leading-none font-semibold tracking-tight text-white sm:text-7xl">
-            {SITE.name}
+            {SITE.wordmark}
           </h1>
         </div>
 

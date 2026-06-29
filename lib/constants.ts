@@ -1,8 +1,9 @@
 export const SITE = {
-  name: "Hippo",
+  name: "hippo",
+  wordmark: "hippo.",
   tagline: "Everything you forget, remembered.",
   description:
-    "Hippo is a memory assistant for work and life; follow-ups, meeting notes, where you put things, and everything in between.",
+    "hippo is a memory assistant for work and life; follow-ups, meeting notes, where you put things, and everything in between.",
   author: "Sumaanta Munde",
   email: "sumaantamunde@gmail.com",
   phone: "9550614763",

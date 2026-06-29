@@ -21,7 +21,7 @@ export function UseCasesPanel({ onSelect, disabled }: UseCasesPanelProps) {
         <h2 className="text-sm font-medium text-zinc-200">Try it yourself</h2>
         <p className="mt-1 text-xs leading-5 text-zinc-500">
           Click an example to send it to the terminal. Mix work and personal —
-          Hippo handles both the same way.
+          hippo handles both the same way.
         </p>
       </div>
 

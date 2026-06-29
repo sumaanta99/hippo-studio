@@ -1,5 +1,5 @@
 export const CASE_STUDY_META = {
-  title: "Why Hippo exists",
+  title: "Why hippo exists",
   subtitle:
     "A case study on building a personal memory product for information that note apps were never designed to hold.",
   role: "Product & Engineering",
@@ -14,7 +14,7 @@ export const CASE_STUDY_SECTIONS = [
     title: "Executive summary",
     content: [
       "People lose hours each week to low-stakes forgetfulness: where they put a passport, a phone number from a conversation, or whether they already bought milk. The information is small, but the cost of losing it is immediate and frustrating.",
-      "Existing tools assume you will organize, title, and retrieve information like a document. Hippo assumes you will speak naturally once and ask naturally later. One engine handles save, recall, update, delete, and shopping — across any interface.",
+      "Existing tools assume you will organize, title, and retrieve information like a document. hippo assumes you will speak naturally once and ask naturally later. One engine handles save, recall, update, delete, and shopping — across any interface.",
     ],
   },
   {
@@ -110,7 +110,7 @@ export const CASE_STUDY_SECTIONS = [
     id: "solution",
     title: "Solution",
     content: [
-      "Hippo is a reusable memory engine with natural-language I/O. Users talk; the system classifies intent, executes the right handler, persists to SQLite, and responds concisely.",
+      "hippo is a reusable memory engine with natural-language I/O. Users talk; the system classifies intent, executes the right handler, persists to SQLite, and responds concisely.",
     ],
     bullets: [
       "Save: extract and store memories from free text",
@@ -148,7 +148,7 @@ export const CASE_STUDY_SECTIONS = [
         tradeoff: "Depends on classification accuracy; misroutes require retry or correction.",
       },
       {
-        decision: "Single HippoEngine shared by all interfaces",
+        decision: "Single hippo engine shared by all interfaces",
         rationale: "One source of truth for business logic, search, and persistence.",
         tradeoff: "Engine API must stay stable as surfaces multiply.",
       },

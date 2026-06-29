@@ -50,9 +50,9 @@ export function useChat({ sessionId }: UseChatOptions) {
         const messageText =
           err instanceof ChatApiError
             ? err.status === 502 || err.status === 503 || err.status === 504
-              ? "Hippo is waking up — the API can take up to 30 seconds on cold start. Try again."
+              ? "hippo is waking up — the API can take up to 30 seconds on cold start. Try again."
               : err.status === 404
-                ? "Hippo API not found. Check that HIPPO_API_URL is set correctly."
+                ? "hippo API not found. Check that HIPPO_API_URL is set correctly."
                 : err.message
             : "Something went wrong. Please try again.";
 
