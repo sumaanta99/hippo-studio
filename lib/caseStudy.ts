@@ -1,5 +1,5 @@
 export const CASE_STUDY_META = {
-  label: "Why hippo",
+  label: "Why hippo.",
   title: "Why should hippo exist?",
   subtitle:
     "hippo is a memory assistant for work and life. Save a detail once, ask for it later.",
