@@ -83,6 +83,7 @@ export const ROADMAP = [
 ];
 
 export const SESSION_STORAGE_KEY = "hippo-session-id";
+export const SESSION_BUNDLE_KEY = "hippo-session-bundle";
 export const TERMINAL_HISTORY_KEY = "hippo-terminal-history";
 
 export const SESSION_NOTICE = {

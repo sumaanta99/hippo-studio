@@ -65,7 +65,6 @@ export function ContactSection() {
         className="mt-8 space-y-4 rounded-xl border border-zinc-900 bg-zinc-950/40 p-6"
       >
         <input type="hidden" name="_subject" value="hippo contact form" />
-        <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
 
         <div>

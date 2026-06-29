@@ -1,4 +1,5 @@
 import { API_BASE } from "@/lib/constants";
+import { authHeaders } from "@/lib/session-api";
 import type { ChatRequest, ChatResponse } from "@/types";
 
 export class ChatApiError extends Error {
@@ -13,19 +14,19 @@ export class ChatApiError extends Error {
 
 export async function sendChatMessage(
   payload: ChatRequest,
+  sessionToken: string,
   signal?: AbortSignal,
 ): Promise<ChatResponse> {
   const response = await fetch(`${API_BASE}/chat`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: authHeaders(sessionToken),
     body: JSON.stringify(payload),
     signal,
   });
 
   if (!response.ok) {
-    const detail = await response.text().catch(() => "");
     throw new ChatApiError(
-      detail || `Request failed with status ${response.status}`,
+      `Request failed with status ${response.status}`,
       response.status,
     );
   }

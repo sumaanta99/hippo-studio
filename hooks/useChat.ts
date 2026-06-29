@@ -9,9 +9,10 @@ import type { ChatResponse } from "@/types";
 
 interface UseChatOptions {
   sessionId: string;
+  sessionToken: string;
 }
 
-export function useChat({ sessionId }: UseChatOptions) {
+export function useChat({ sessionId, sessionToken }: UseChatOptions) {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStatus, setLoadingStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -36,24 +37,27 @@ export function useChat({ sessionId }: UseChatOptions) {
       try {
         const result = await sendChatMessage(
           { message: message.trim(), session_id: sessionId },
+          sessionToken,
           controller.signal,
         );
-        trackChatSuccess(sessionId, message, result);
+        trackChatSuccess(sessionId, sessionToken, message, result);
         return { result, error: null };
       } catch (err) {
         if (err instanceof DOMException && err.name === "AbortError") {
           return { result: null, error: null };
         }
 
-        trackChatError(sessionId, message);
+        trackChatError(sessionId, sessionToken, message);
 
         const messageText =
           err instanceof ChatApiError
             ? err.status === 502 || err.status === 503 || err.status === 504
               ? "hippo is waking up — the API can take up to 30 seconds on cold start. Try again."
               : err.status === 404
-                ? "hippo API not found. Check that HIPPO_API_URL is set correctly."
-                : err.message
+                ? "hippo is unavailable right now. Try again in a moment."
+                : err.status === 429
+                  ? "Too many requests. Give it a moment and try again."
+                  : "Something went wrong. Please try again."
             : "Something went wrong. Please try again.";
 
         setError(messageText);
@@ -63,7 +67,7 @@ export function useChat({ sessionId }: UseChatOptions) {
         setLoadingStatus(null);
       }
     },
-    [sessionId],
+    [sessionId, sessionToken],
   );
 
   const cancel = useCallback(() => {

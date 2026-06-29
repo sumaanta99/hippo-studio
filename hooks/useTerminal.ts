@@ -49,9 +49,10 @@ function createWelcomeLines(includeGreeting = true): TerminalLine[] {
 }
 
 export function useTerminal() {
-  const { sessionId, isReady } = useSession();
+  const { sessionId, sessionToken, isReady } = useSession();
   const { sendMessage, isLoading, loadingStatus } = useChat({
     sessionId,
+    sessionToken,
   });
 
   const [lines, setLines] = useState<TerminalLine[]>(createWelcomeLines);

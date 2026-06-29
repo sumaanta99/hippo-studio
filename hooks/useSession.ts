@@ -3,46 +3,63 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { trackSessionStart } from "@/lib/analytics-client";
-import { SESSION_STORAGE_KEY } from "@/lib/constants";
-import { generateId } from "@/lib/utils";
+import {
+  createSession,
+  ensureSession,
+  resetStoredSession,
+  type SessionBundle,
+} from "@/lib/session-api";
 
 export function useSession() {
-  const [sessionId, setSessionId] = useState<string>("");
+  const [sessionId, setSessionId] = useState("");
+  const [sessionToken, setSessionToken] = useState("");
+  const [isReady, setIsReady] = useState(false);
+
+  const applyBundle = useCallback((bundle: SessionBundle) => {
+    setSessionId(bundle.sessionId);
+    setSessionToken(bundle.token);
+    setIsReady(true);
+  }, []);
 
   useEffect(() => {
-    let stored = localStorage.getItem(SESSION_STORAGE_KEY);
-    if (!stored) {
-      const legacy = sessionStorage.getItem(SESSION_STORAGE_KEY);
-      if (legacy) {
-        localStorage.setItem(SESSION_STORAGE_KEY, legacy);
-        sessionStorage.removeItem(SESSION_STORAGE_KEY);
-        stored = legacy;
-      }
-    }
+    let cancelled = false;
 
-    if (stored) {
-      setSessionId(stored);
-      return;
-    }
+    void ensureSession()
+      .then((bundle) => {
+        if (!cancelled) {
+          applyBundle(bundle);
+        }
+      })
+      .catch(async () => {
+        try {
+          const bundle = await createSession();
+          if (!cancelled) {
+            applyBundle(bundle);
+          }
+        } catch {
+          if (!cancelled) {
+            setIsReady(true);
+          }
+        }
+      });
 
-    const id = `web-${generateId().slice(0, 12)}`;
-    localStorage.setItem(SESSION_STORAGE_KEY, id);
-    setSessionId(id);
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [applyBundle]);
 
   useEffect(() => {
     if (sessionId) {
-      trackSessionStart(sessionId);
+      trackSessionStart(sessionId, sessionToken);
     }
-  }, [sessionId]);
+  }, [sessionId, sessionToken]);
 
-  const resetSession = useCallback(() => {
-    const id = `web-${generateId().slice(0, 12)}`;
-    localStorage.setItem(SESSION_STORAGE_KEY, id);
-    setSessionId(id);
-    trackSessionStart(id);
-    return id;
-  }, []);
+  const resetSession = useCallback(async () => {
+    const bundle = await resetStoredSession();
+    applyBundle(bundle);
+    trackSessionStart(bundle.sessionId, bundle.token);
+    return bundle.sessionId;
+  }, [applyBundle]);
 
-  return { sessionId, resetSession, isReady: Boolean(sessionId) };
+  return { sessionId, sessionToken, resetSession, isReady };
 }

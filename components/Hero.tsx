@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowIcon, TerminalIcon } from "@/components/Icons";
+import { ArrowIcon, TerminalIcon, WhatsAppIcon } from "@/components/Icons";
 import Link from "next/link";
 
 import { Button } from "@/components/Button";
@@ -52,7 +52,10 @@ export function Hero() {
           <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-xs font-medium text-violet-300">
             Coming Soon
           </span>
-          <span>📱 WhatsApp support is on the way.</span>
+          <span className="inline-flex items-center gap-1.5">
+            <WhatsAppIcon className="h-4 w-4 text-emerald-400" />
+            WhatsApp support is on the way.
+          </span>
         </div>
 
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row">
