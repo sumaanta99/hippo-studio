@@ -11,7 +11,7 @@ export function Navigation() {
       <nav className="mx-auto flex min-h-16 max-w-6xl items-center justify-between px-6 py-3">
         <div>
           <Link
-            href="#"
+            href="/"
             className="text-sm font-medium text-zinc-200 transition-colors hover:text-white"
           >
             {SITE.name}
@@ -23,6 +23,12 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-3 text-sm text-zinc-500 sm:hidden">
+          <Link
+            href="/case-study"
+            className="transition-colors hover:text-zinc-200"
+          >
+            Case study
+          </Link>
           <Link
             href={LINKS.github}
             target="_blank"
@@ -43,7 +49,7 @@ export function Navigation() {
 
         <div className="hidden items-center gap-5 text-sm text-zinc-500 sm:flex">
           <Link
-            href="#case-study"
+            href="/case-study"
             className="transition-colors hover:text-zinc-200"
           >
             Case study

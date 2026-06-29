@@ -58,12 +58,10 @@ export function CaseStudySection() {
 
   return (
     <motion.section
-      id="case-study"
       initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="border-t border-zinc-900 py-20"
+      className="pt-28 pb-20"
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-3xl">

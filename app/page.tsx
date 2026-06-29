@@ -1,4 +1,3 @@
-import { CaseStudySection } from "@/components/CaseStudy";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Navigation } from "@/components/Navigation";
@@ -13,7 +12,6 @@ export default function Home() {
       <main className="mx-auto max-w-6xl px-6">
         <Hero />
         <Terminal />
-        <CaseStudySection />
         <TechStackSection />
         <RoadmapSection />
       </main>
