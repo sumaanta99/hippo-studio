@@ -14,7 +14,7 @@ export function Navigation() {
             href="#"
             className="text-sm font-medium text-zinc-200 transition-colors hover:text-white"
           >
-            🦛 {SITE.name}
+            {SITE.name}
           </Link>
           <p className="mt-0.5 text-xs text-zinc-500">
             Built by{" "}
