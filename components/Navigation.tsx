@@ -3,6 +3,7 @@
 import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from "@/components/Icons";
 import Link from "next/link";
 
+import { CASE_STUDY_META } from "@/lib/caseStudy";
 import { LINKS, SITE } from "@/lib/constants";
 
 export function Navigation() {
@@ -43,7 +44,7 @@ export function Navigation() {
             href="/case-study"
             className="transition-colors hover:text-zinc-200"
           >
-            Case study
+            {CASE_STUDY_META.label}
           </Link>
           <Link
             href="/#contact"
@@ -74,7 +75,7 @@ export function Navigation() {
             href="/case-study"
             className="transition-colors hover:text-zinc-200"
           >
-            Case study
+            {CASE_STUDY_META.label}
           </Link>
           <Link
             href="/#contact"

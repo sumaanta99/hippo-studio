@@ -16,7 +16,7 @@ const categoryStyles: Record<string, string> = {
 
 export function UseCasesPanel({ onSelect, disabled }: UseCasesPanelProps) {
   return (
-    <aside className="lg:pt-1">
+    <aside className="self-center">
       <div className="mb-4">
         <h2 className="text-sm font-medium text-zinc-200">Try it yourself</h2>
         <p className="mt-1 text-xs leading-5 text-zinc-500">
@@ -39,7 +39,7 @@ export function UseCasesPanel({ onSelect, disabled }: UseCasesPanelProps) {
                 "disabled:cursor-not-allowed disabled:opacity-50",
               )}
             >
-              <div className="flex items-start justify-between gap-2">
+              <div className="flex items-center justify-between gap-2">
                 <span className="text-sm font-medium text-zinc-200">
                   {useCase.title}
                 </span>
