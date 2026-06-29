@@ -6,9 +6,31 @@ import { Navigation } from "@/components/Navigation";
 import { CASE_STUDY_META } from "@/lib/caseStudy";
 import { SITE } from "@/lib/constants";
 
+const shareTitle = `${CASE_STUDY_META.title} — ${SITE.name}`;
+const shareDescription = CASE_STUDY_META.subtitle;
+
 export const metadata: Metadata = {
-  title: `${CASE_STUDY_META.title} — ${SITE.name}`,
-  description: CASE_STUDY_META.subtitle,
+  title: shareTitle,
+  description: shareDescription,
+  openGraph: {
+    title: shareTitle,
+    description: shareDescription,
+    type: "article",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: shareTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: shareTitle,
+    description: shareDescription,
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function CaseStudyPage() {
