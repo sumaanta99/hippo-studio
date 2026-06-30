@@ -25,7 +25,7 @@ export function Hero() {
         className="relative mx-auto max-w-4xl px-6 text-center"
       >
         <p className="mb-4 text-sm tracking-[0.2em] text-zinc-500 uppercase sm:mb-6">
-          Memory assistant for work &amp; life
+          Your memory assistant for life
         </p>
 
         <div className="flex items-center justify-center gap-3 sm:gap-4">
